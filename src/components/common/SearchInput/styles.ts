@@ -1,6 +1,6 @@
 import { COLORS } from '@assets/theme/theme';
 import { scaleHeight, scaleWidth } from '@utils/scaling';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, I18nManager } from 'react-native';
 
 export default StyleSheet.create({
   searchCont: {
@@ -16,5 +16,6 @@ export default StyleSheet.create({
     flex: 1,
     marginStart: scaleWidth(10),
     paddingVertical: scaleHeight(12),
+    textAlign: I18nManager.isRTL ? 'right' : 'left',
   },
 });
