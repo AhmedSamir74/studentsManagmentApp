@@ -11,7 +11,9 @@ This task is for student managment by admin<br />
 - Dark and Light themes
 - App support two languages Arabic and English 
 - App support deep linking for sharing it 
-- I wish I could add unit testing but unfortunately time is tight
+- Unit testing for student card 
+- Unit testing for chat card 
+I wish I could add unit testing for the hole app but unfortunately th time is tight
 
 to run this task plz run the following commands after clone <br />
 
