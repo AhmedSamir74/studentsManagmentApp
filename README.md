@@ -3,7 +3,7 @@
 This task is for student managment by admin<br />
 
 # Featured
-- <b>Using APIs for saving data</b>
+- <b>Created APIs for saving data</b>
 - Listing students with pagination, search feature and pull to refresh
 - View Student details
 - Chat with student
