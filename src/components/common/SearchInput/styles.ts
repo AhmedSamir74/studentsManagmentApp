@@ -17,5 +17,6 @@ export default StyleSheet.create({
     marginStart: scaleWidth(10),
     paddingVertical: scaleHeight(12),
     textAlign: I18nManager.isRTL ? 'right' : 'left',
+    color: COLORS.black,
   },
 });
