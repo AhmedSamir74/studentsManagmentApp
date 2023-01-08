@@ -3,7 +3,7 @@
 This task is for student managment by admin<br />
 
 # Featured
-- Listing students from **API** with pagination and search feature
+- Listing students from ( **API** ) with pagination and search feature
 - View Student details
 - Chat with student
 - List students chats with pagination and search feature
