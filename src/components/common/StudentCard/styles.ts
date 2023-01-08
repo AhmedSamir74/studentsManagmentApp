@@ -35,6 +35,7 @@ export default StyleSheet.create({
   },
   descText: {
     marginTop: scaleHeight(5),
+    textAlign: 'left',
   },
   arrow: {
     alignSelf: 'center',
