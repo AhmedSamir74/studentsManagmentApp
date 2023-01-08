@@ -45,6 +45,7 @@ export const StudentCard = ({
       activeOpacity={0.7}
       style={[styles.cardCont, isDark && styles.darkCard]}>
       <FastImage
+        testID="cardImage"
         style={styles.img}
         source={{
           uri: image,
@@ -54,7 +55,11 @@ export const StudentCard = ({
       />
       <View style={styles.txtCont}>
         <Row justifyContent="space-between" alignItems="center">
-          <CustomText numberOfLines={2} size={14} weight="semiBold">
+          <CustomText
+            testID="studentName"
+            numberOfLines={2}
+            size={14}
+            weight="semiBold">
             <Highlighter
               highlightStyle={styles.yellowBG}
               searchWords={[query]}
@@ -63,7 +68,7 @@ export const StudentCard = ({
           </CustomText>
 
           {!isEnabled && (
-            <View style={styles.disabledLabel}>
+            <View style={styles.disabledLabel} testID="disabledView">
               <CustomText size={12} weight="semiBold" color={COLORS.white}>
                 {strings('disabled')}
               </CustomText>
@@ -71,6 +76,7 @@ export const StudentCard = ({
           )}
         </Row>
         <CustomText
+          testID="callAndRollNumber"
           numberOfLines={3}
           size={12}
           color={isDark ? COLORS.white : COLORS.darkGray}
