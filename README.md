@@ -3,10 +3,11 @@
 This task is for student managment by admin<br />
 
 # Featured
-- Listing students from ( **API** ) with pagination and search feature
+- <b>Using APIs for saving data</b>
+- Listing students with pagination, search feature and pull to refresh
 - View Student details
 - Chat with student
-- List students chats with pagination and search feature
+- List students chats with pagination, search feature and pull to refresh
 
 - Dark and Light themes
 - App support two languages Arabic and English 
