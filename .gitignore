@@ -28,6 +28,7 @@ build/
 .gradle
 local.properties
 *.iml
+*.hprof
 android/app/build
 android/app/src/main/res/drawable-*
 android/.idea
@@ -35,6 +36,7 @@ android/.gradle
 android/local.properties
 android/*.iml
 /android/app/*.apk
+*.apk
 
 # node.js
 #
