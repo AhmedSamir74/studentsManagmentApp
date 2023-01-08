@@ -1,3 +1,4 @@
+import { COLORS } from '@assets/theme/theme';
 import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   layout: {
@@ -6,5 +7,9 @@ export default StyleSheet.create({
   },
   messageContStyle: {
     borderWidth: 1,
+  },
+  messageBarCont: {
+    flex: 1,
+    color: COLORS.black,
   },
 });

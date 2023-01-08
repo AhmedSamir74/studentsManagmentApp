@@ -40,20 +40,7 @@ export const ChatRoomScreen: FC = () => {
     try {
       const studentChat = await firebaseController.getStudentChat(studentId);
 
-      if (studentChat.empty) {
-        // create chat room
-        const response = await firebaseController.addChatRoom({
-          studentId: studentId,
-          studentImage: student?.image,
-          studentName: student?.lastName,
-          class: student?.class,
-          rollNumber: student?.rollNumber,
-          createdAt: new Date().getTime().toString(),
-          updatedAt: new Date().getTime().toString(),
-          lastMessage: '',
-        });
-        setChatId(response.id);
-      } else {
+      if (!studentChat.empty) {
         // get chat messages
         const chatMessages = await firebaseController.getChatMessages(
           studentChat.docs[0]?.id,
@@ -91,16 +78,22 @@ export const ChatRoomScreen: FC = () => {
     sender?: typeof ADMID_STORE_DATA,
   ) => {
     try {
-      await firebaseController.addChatMessage({
-        chatId,
-        text: msg,
-        createdAt: new Date().getTime().toString(),
-        sender: sender?.id ? sender : ADMID_STORE_DATA,
-      });
-      firebaseController.updateChat(chatId, {
-        updatedAt: new Date().getTime().toString(),
-        lastMessage: msg,
-      });
+      if (!chatId) {
+        const response = await firebaseController.addChatRoom({
+          studentId: studentId,
+          studentImage: student?.image,
+          studentName: student?.lastName,
+          class: student?.class,
+          rollNumber: student?.rollNumber,
+          createdAt: new Date().getTime().toString(),
+          updatedAt: new Date().getTime().toString(),
+          lastMessage: '',
+        });
+        sendMessageToServer(response.id, msg, sender);
+        setChatId(response.id);
+      } else {
+        sendMessageToServer(chatId, msg, sender);
+      }
     } catch (error) {
       Toast.show({
         type: 'error',
@@ -110,6 +103,23 @@ export const ChatRoomScreen: FC = () => {
       console.error(error);
       setMessages(prevState => [...prevState.slice(0, -1)]);
     }
+  };
+
+  const sendMessageToServer = async (
+    cId: string,
+    msg: string,
+    sender?: typeof ADMID_STORE_DATA,
+  ) => {
+    await firebaseController.addChatMessage({
+      chatId: cId,
+      text: msg,
+      createdAt: new Date().getTime().toString(),
+      sender: sender?.id ? sender : ADMID_STORE_DATA,
+    });
+    firebaseController.updateChat(cId, {
+      updatedAt: new Date().getTime().toString(),
+      lastMessage: msg,
+    });
   };
 
   const onSend = (msgs: IChatMessage[] = []) => {
@@ -163,6 +173,7 @@ export const ChatRoomScreen: FC = () => {
           user={{
             _id: ADMID_STORE_DATA.id,
           }}
+          textInputProps={{ style: styles.messageBarCont }}
         />
       )}
     </CustomLayout>
