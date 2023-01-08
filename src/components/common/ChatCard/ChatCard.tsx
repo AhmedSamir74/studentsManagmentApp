@@ -31,6 +31,7 @@ export const ChatCard = ({ query, chat }: IChatCardProps) => {
       activeOpacity={0.7}
       style={[styles.cardCont, isDark && styles.darkNewCard]}>
       <FastImage
+        testID="chatImage"
         style={styles.img}
         source={{
           uri: chat?.studentImage,
@@ -41,16 +42,20 @@ export const ChatCard = ({ query, chat }: IChatCardProps) => {
       <Row style={styles.nameAndArrowCont} justifyContent="space-between">
         <View style={styles.txtCont}>
           <Row justifyContent="space-between" alignItems="center">
-            <CustomText numberOfLines={1} size={13} weight="semiBold">
+            <CustomText
+              numberOfLines={1}
+              size={13}
+              weight="semiBold"
+              testID="studentName">
               <Highlighter
                 highlightStyle={styles.yellowBG}
                 searchWords={[query]}
                 textToHighlight={chat?.studentName}
               />
             </CustomText>
-            {chat?.createdAt && (
-              <CustomText size={10} color={COLORS.darkGray}>
-                {moment(parseInt(chat.createdAt, 10)).format('hh:mm A')}
+            {chat?.updatedAt && (
+              <CustomText testID="updatedAt" size={10} color={COLORS.darkGray}>
+                {moment(parseInt(chat.updatedAt, 10)).format('hh:mm A')}
               </CustomText>
             )}
           </Row>
